@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system.js"></script>
+    </head>
+    <body>
+        <Root/>
+        <script> 
+            SystemJS.config({
+                map: {
+                    'test-component-a':"/dist/test-component-a.js",
+                    'test-component-b':"/dist/test-component-b.js", 
+                }
+            })
+
+            SystemJS.import("test-component-a")
+            .then(x =>
+            x.run(document.querySelector("Root")) 
+            ) 
+
+
+        </script>
+            
+
+</html>
