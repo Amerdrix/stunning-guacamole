@@ -1,20 +1,20 @@
 module.exports = {
     entry: {
-        "test-component-a": "componentA/main",
-        "test-component-b": "componentB/main",
+        "dev": "./src/componentA/main",
+        "test-component-b": "./src/componentB/main",
 
     },
     output: {
        filename: "[name].js",
        path: __dirname + "/dist",
        library: "[name]",
-       libraryTarget: "commonjs2"
+       libraryTarget: "umd"
 
     },
+    
     resolve: {
-        root: __dirname + "/src/",
-    // Add `.ts` and `.tsx` as a resolvable extension.
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        // Add `.ts` and `.tsx` as a resolvable extension.
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
     module: {
         loaders: [
@@ -23,8 +23,11 @@ module.exports = {
             }
         ]
     },
-    externals: [
-        'test-component-a',
-        'test-component-b'
-    ]
+    externals: {
+        'test-component-a': 'test-component-a' ,
+        'test-component-b': 'test-component-b',
+        "requirejs": 'require', 
+        'knockout':'knockout' 
+
+    }
 }

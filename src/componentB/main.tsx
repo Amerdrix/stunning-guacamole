@@ -1,14 +1,13 @@
 import * as React from 'react'
 import * as ReactDom from 'react-dom'
-
+import * as requirejs from 'requirejs'
 
 
 class ExternalComponent extends React.Component<{},{}>{
 
     componentDidMount(){
         const node = ReactDom.findDOMNode(this)
-        const comp = require('test-component-a')
-        comp.nested(node, "frob frob bob")
+        requirejs(['test-component-a/nested'], comp =>      comp.nested(node, "frob frob bob"))
     }
 
     render (){
